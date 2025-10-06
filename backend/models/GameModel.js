@@ -6,4 +6,14 @@ let games = [
     {id: 3, name: "Ghost of Yotei", price: 400.00},
 ];
 
-module.exports = games;
+const GameModel = {
+    findAll: () => {
+        return games;
+    }, 
+
+    add: (newGame) => {
+        games.push(newGame);
+        return newGame;
+    }
+}
+module.exports = GameModel;
