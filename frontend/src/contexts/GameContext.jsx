@@ -6,7 +6,7 @@ export function GameProvider({children}) {
     const [error, setErrors] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost:3000/games")
+        fetch("http://localhost:5000/games")
     .then((response) => {  
         if (!response.ok) {
             throw new Error("Erro ao buscar games");
@@ -15,7 +15,7 @@ export function GameProvider({children}) {
     })
     .then((data) => {
         console.log("Games recebidos: " + data);
-        setGames(JSON.parse(data));
+        setGames(data);
     })
     .catch((error) => {
       console.error("Erro ao buscar games: " + error);
@@ -24,7 +24,7 @@ export function GameProvider({children}) {
 }, [])
 
 const addGame = (newGame) => {
-    fetch("http://localhost:3000/games", {
+    fetch("http://localhost:5000/games", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"},

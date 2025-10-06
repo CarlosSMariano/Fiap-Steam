@@ -1,14 +1,16 @@
 import React from 'react'
 import Adicionar from './Adicionar'
 import Produtos from './Produtos';
-import { useState, useEffect } from 'react';
+import {GameContext} from "../contexts/GameContext"
+import { useState, useEffect, useContext } from 'react';
 
 
 
 function Catalogo(){
     
     const [carrinho, setCarrinho] = useState([]);
-    const [resetButtons, setResetButtons] = useState(false); 
+    const [resetButtons, setResetButtons] = useState(false);
+    const { games, gameError, addGame } = useContext(GameContext);
 
     function onSetGame(gameTitulo, gamePreco){
         const novoItem = {titulo: gameTitulo, preco : gamePreco}
@@ -36,22 +38,13 @@ function Catalogo(){
                 <div>
                     <h3>Lista de Jogos:</h3>
                         <div className='py-5 px-4 '>
-                            <div className='flex space-x-2'>
-                                <Produtos>Hollow Knight</Produtos>
-                                <Adicionar reset={resetButtons} onClick={() => onSetGame("Hollow Knight",60)}>+</Adicionar>
-                            </div>
-                            <div className='flex space-x-2'>
-                                <Produtos>Hollow Knight: Silksong</Produtos> 
-                                <Adicionar  reset={resetButtons} onClick={() => onSetGame("Hollow Knight: Silksong",30)}>+</Adicionar>
-                            </div>
-                            <div className='flex space-x-2'>
-                                <Produtos>Ghost of Yotei</Produtos>
-                                <Adicionar  reset={resetButtons} onClick={() => {onSetGame("Ghost of Yotei", 400)}}>+</Adicionar>
-                            </div >
-                            <div className='flex space-x-2'>
-                                    <Produtos>Ghost of Tsushima</Produtos>
-                                    <Adicionar  reset={resetButtons} onClick={() => onSetGame("Ghost of Tsushima", 300)}>+</Adicionar>
-                            </div>
+                            {games.map((game) => (
+                                <div className='flex space-x-2'>
+                                    <Produtos>{game.name}</Produtos>
+                                    <Adicionar reset={resetButtons} onClick={() => onSetGame(game.name, game.price)}>+</Adicionar>
+                                </div>
+                            ))}
+                        {gameError && <p className="text-red-500">Erro ao carregar os jogos: {gameError.message}</p>}
                         </div>  
                 </div>
                 <div>
