@@ -4,8 +4,8 @@ const router = express.Router();
 
 let{listGames, addGame} = require('../controllers/GameController');
 
-router.get('/games', listGames);
+router.get('/', listGames);
 
-router.post('/games', addGame);
+router.post('/', addGame);
 
 module.exports = router;
