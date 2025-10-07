@@ -57,26 +57,27 @@ Siga os passos abaixo para rodar a aplicação em sua máquina:
     ```
 
 3.  Instale as dependências:
-    Back-end:
-    ```bash
-    npm npm init -y 
-    npm install express cors
-    ```
-   Front-end:
-    ```bash
-    npm install
-    ```
    
+Back-end:
+```bash
+npm npm init -y 
+npm install express cors
+```
+Front-end:
+```bash
+npm install
+```
 
 5.  Inicie o servidor de desenvolvimento:
-   Back-end:
-    ```bash
-    node Server.js
-    ```
-   Front-end:
-    ```bash
-    npm run dev
-    ```
+   
+Back-end:
+```bash
+node Server.js
+```
+Front-end:
+```bash
+npm run dev
+```
 
 A aplicação estará disponível em na porta indicada pelo terminal, como: `http://localhost:5173`.
 Caso Queira conferir as rotas do endpoint, ficará disponível em:  `http://localhost:5000/games`.
