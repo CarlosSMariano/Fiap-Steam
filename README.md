@@ -2,7 +2,7 @@
 
 ## Desenvolvido Por 
 * **Aluno: Carlos Eduardo Sanches mariano**
-* **Rm: 561756**
+* **RM: 561756**
 
 ## 💡Resumo
 Este projeto é uma pequena aplicação de catálogo de produtos, construída com foco em demonstrar a criação de endpoints e seu consumo na aplicação. O objetivo é simular uma sistema de compras simples, permitindo os usuários adicionarem novos produtos com seus respectivos preços, adiciona-lós ao carrinho de compra, verificar o total e finalizar a "compra".
