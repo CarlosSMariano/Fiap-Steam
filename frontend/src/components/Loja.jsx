@@ -36,26 +36,25 @@ function Catalogo(){
         <>
             <div className='flex justify-center items-center space-x-44'>
                 <div>
-                    <h3>Lista de Jogos:</h3>
-                        <div className='py-5 px-4 '>
+                    <h3 className="text-[#91a3ad] text-[23px] font-bold ">Lista de Jogos:</h3>
+                        <div className='py-5 px-4'>
                             {games.map((game) => (
-                                <div className='flex space-x-2'>
-                                    <Produtos>{game.name}</Produtos>
+                                <div className='flex justify-between items-center mt-3 space-x-2'>
+                                    <Produtos key={game.id}>{game.name}</Produtos>
                                     <Adicionar reset={resetButtons} onClick={() => onSetGame(game.name, game.price)}>+</Adicionar>
                                 </div>
                             ))}
-                        {gameError && <p className="text-red-500">Erro ao carregar os jogos: {gameError.message}</p>}
                         </div>  
                 </div>
-                <div>
-                    <h3>Carrinho:</h3>
-                    <div>
+                <div  className='block'>
+                    <h3 className="text-[#7d7d7d] text-[23px] font-bold">Carrinho:</h3>
+                    <div className='py-5 px-4'>
                     {carrinho.map((item, index) => (
                             <Produtos key={index}>{item.titulo} - R${item.preco},00</Produtos>
                         ))}
                     </div>
                     <div>
-                        <h3>
+                        <h3 className='text-[27px] text-[#ed145b] font-extrabold'>
                             Total - R${total}
                         </h3>
                     </div>
