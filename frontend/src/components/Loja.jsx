@@ -10,7 +10,8 @@ function Catalogo(){
     
     const [carrinho, setCarrinho] = useState([]);
     const [resetButtons, setResetButtons] = useState(false);
-    const { games, gameError, addGame } = useContext(GameContext);
+    const { games, addGame } = useContext(GameContext);
+    const [newGame, setNewGame] = useState({name: null, price: null});
 
     function onSetGame(gameTitulo, gamePreco){
         const novoItem = {titulo: gameTitulo, preco : gamePreco}
@@ -23,6 +24,18 @@ function Catalogo(){
         setResetButtons(true);
     };
 
+    const handleChange = (e) => {
+        const value = e.target.name === 'price' ? Number(e.target.value) : e.target.value;
+        setNewGame({...newGame,[e.target.name]: value})
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        addGame({name: newGame.name, price: newGame.price})
+
+        setNewGame({name: null, price: null});
+    }
+
     
     useEffect(() => {
         if (resetButtons) {
@@ -34,6 +47,56 @@ function Catalogo(){
 
     return (
         <>
+            <div className="flex justify-center items-center px-3.5">
+                <form onSubmit={handleSubmit} className="mb-6 space-y-4">
+                    <div className="flex space-x-4 items-center"> 
+                        <input 
+                            type="text" 
+                            name="name"
+                            value={newGame.name} 
+                            onChange={handleChange} 
+                            placeholder='Digite o nome do jogo...'
+                            className="
+                                border border-gray-300 p-2 rounded 
+                                focus:outline-none focus:ring-0
+                                placeholder-gray-400
+                                text-gray-300 bg-gray-700                
+                            " 
+                        />
+
+            
+                        <div className="relative"> 
+                        
+                            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400 pointer-events-none">
+                                R$
+                            </span>
+                            
+                            <input 
+                                type="number" 
+                                name="price"
+                                value={newGame.price} 
+                                onChange={handleChange} 
+                                placeholder='Preço do jogo...' 
+                                min="2" 
+                                max="999"
+                                className="
+                                    pl-8 border border-gray-300 p-2 rounded 
+                                    focus:outline-none focus:ring-0
+                                    placeholder-gray-400
+                                    text-gray-300 bg-gray-700                 /* ⬅️ Novo: Cor do fundo e texto digitado */
+                                    [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [appearance:textfield] 
+                                " 
+                            />
+                        </div>
+                        
+                        <button 
+                            type='submit' 
+                            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+                            Adicionar
+                        </button>
+                    </div>
+                </form>
+            </div>
             <div className='flex justify-center items-center space-x-44'>
                 <div>
                     <h3 className="text-[#91a3ad] text-[23px] font-bold ">Lista de Jogos:</h3>

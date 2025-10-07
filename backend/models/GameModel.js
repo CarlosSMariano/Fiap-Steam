@@ -11,7 +11,18 @@ const GameModel = {
         return games;
     }, 
 
-    add: (newGame) => {
+    add: (gameData) => {
+        const lastGame = games[games.length - 1];
+        const newId = lastGame ? lastGame.id + 1 : 1;
+
+       
+        const newGame = {
+            id: newId,
+            name: gameData.name,
+            price: Number(gameData.price) 
+        };
+        
+ 
         games.push(newGame);
         return newGame;
     }
