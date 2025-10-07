@@ -1,7 +1,7 @@
 # Fiap Steam - React
 
 ## Desenvolvido Por 
-* **Aluno: Carlos Eduardo Sanches mariano**
+* **Aluno: Carlos Eduardo Sanches Mariano**
 * **RM: 561756**
 
 ## 💡Resumo
